@@ -87,16 +87,6 @@
     set hlsearch        "高亮显示搜索结果
     set incsearch       "搜索时,直接高亮
     "set nowrapscan      "搜索到文件两端时,不重新搜索
-	
-""""""""""""""""""""""
-"      自动补全
-""""""""""""""""""""""
-	inoremap ( ()<ESC>
-	inoremap { {}<esc>
-	inoremap [ []<ESC>
-	inoremap < <><ESC>
-	inoremap ' ''<ESC>
-	inoremap " ""<ESC>
 
 """"""""""""""""""""""
 "      命令行
