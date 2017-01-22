@@ -38,14 +38,6 @@
 	"set helplang=cn
 
 """"""""""""""""""""""
-"      语法高亮、配色
-""""""""""""""""""""""
-	""syntax enable			"激活 语法高亮 功能
-	""syntax on				"开启语法高亮
-	set background=dark		"设置背景颜色为暗色
-	colorscheme solarized	"选择颜色方案（将colors文件夹下的solarized.vim文件，复制到~/vimfiles/colors目录中）
-
-""""""""""""""""""""""
 "      窗口、字体
 """"""""""""""""""""""
 	set lines=29 columns=108			"窗口大小 行=lines 列=columns
