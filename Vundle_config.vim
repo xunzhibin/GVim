@@ -1,43 +1,66 @@
 "--------------------------------------
-" Vundle²å¼ş¹ÜÀí¹¤¾ß  
-" ¿ËÂ¡Vundle²å¼ş¹ÜÀíÆ÷ git clone https://github.com/VundleVim/Vundle.vim.git /d/Vim/vimfiles/bundle/Vundle.vim
-" ÒıÈë ÔÚ _vimrc ÎÄ¼şÖĞ£ºsource $VIM/GVim/Vundle_config.vim
-    " :PluginList          - ÁĞ³öÅäÖÃµÄ²å¼ş
-    " :PluginInstall       - °²×°²å¼ş
-    " :PluginInstall(!)    - °²×°(¸üĞÂ)²å¼ş
-    " :PluginClean(!)      - È·ÈÏ(»ò×Ô¶¯Åú×¼)É¾³ıÎ´Ê¹ÓÃµÄ²å¼ş
-"	< ²å¼ş¹ÜÀí >
+" Vundleæ’ä»¶ç®¡ç†å·¥å…·
+" å…‹éš†Vundleæ’ä»¶ç®¡ç†å™¨ git clone https://github.com/VundleVim/Vundle.vim.git /d/Vim/vimfiles/bundle/Vundle.vim
+" å¼•å…¥ åœ¨ _vimrc æ–‡ä»¶ä¸­ï¼šsource $VIM/GVim/Vundle_config.vim
+    " :PluginList          - åˆ—å‡ºé…ç½®çš„æ’ä»¶
+    " :PluginInstall       - å®‰è£…æ’ä»¶
+    " :PluginInstall(!)    - å®‰è£…(æ›´æ–°)æ’ä»¶
+    " :PluginClean(!)      - ç¡®è®¤(æˆ–è‡ªåŠ¨æ‰¹å‡†)åˆ é™¤æœªä½¿ç”¨çš„æ’ä»¶
+"	< æ’ä»¶ç®¡ç† >
 "--------------------------------------
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" ÉèÖÃÔËĞĞÂ·¾¶£¬¼ÓÔØºÍ³õÊ¼»¯vundle 
+" è®¾ç½®è¿è¡Œè·¯å¾„ï¼ŒåŠ è½½å’Œåˆå§‹åŒ–vundle
 set rtp+=$VIM/vimfiles/bundle/Vundle.vim/
 call vundle#begin('$VIM/vimfiles/bundle/')
 
 
-" ÈÃVundle¹ÜÀí²å¼ş¹ÜÀí Vundle (±ØĞèµÄ)
+" è®©Vundleç®¡ç†æ’ä»¶ç®¡ç† Vundle (å¿…éœ€çš„)
 Plugin 'VundleVim/Vundle.vim'
 
-" Óï·¨¸ßÁÁ
+"--------------------------------------
+" web å‰ç«¯ æ’ä»¶
+"--------------------------------------
+
+"å¿«é€Ÿå¼€å‘HTMLå’ŒCSS(Zen Coding) æ•™ç¨‹ï¼šhttps://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL
+Plugin 'mattn/emmet-vim'
+
+"é«˜äº®HTML/XMLåŒ¹é…æ ‡ç­¾
+Plugin 'gregsexton/matchtag'
+
+"CSS é¢œè‰²é«˜äº®
+Plugin 'ap/vim-css-color'
+
+"--------------------------------------
+" å…¬å…± æ’ä»¶
+"--------------------------------------
+
+" é…è‰²ä¸»é¢˜(é…è‰²æ–¹æ¡ˆ)
 Plugin 'altercation/vim-colors-solarized'
 
-" ×Ô¶¯²¹È«À¨ºÅ¡¢ÒıºÅµÈ¡£°´ÏÂShift+Tab£¬Ìøµ½²¹È«µÄ·ûºÅºóÃæ£¬²¢ÇÒÊÇinsertÄ£Ê½
+" è¯­æ³•æ£€æŸ¥
+Plugin 'scrooloose/syntastic'
+
+"æ ‘å½¢ç›®å½•æ’ä»¶
+Plugin 'scrooloose/nerdtree'
+
+
+
+" è‡ªåŠ¨è¡¥å…¨æ‹¬å·ã€å¼•å·ç­‰ã€‚æŒ‰ä¸‹Shift+Tabï¼Œè·³åˆ°è¡¥å…¨çš„ç¬¦å·åé¢ï¼Œå¹¶ä¸”æ˜¯insertæ¨¡å¼
 Plugin 'Raimondi/delimitMate'
 
-" ¶à¹â±ê¶àĞĞ±à¼­
-Plugin 'terryma/vim-multiple-cursors'
+" å¤šå…‰æ ‡å¤šè¡Œç¼–è¾‘
+"Plugin 'terryma/vim-multiple-cursors'
 
-" ×¢ÊÍ´úÂë²å¼ş
-Plugin 'tpope/vim-commentary'
+" æ³¨é‡Šä»£ç æ’ä»¶
+"Plugin 'tpope/vim-commentary'
 
-"×´Ì¬À¸²å¼ş(×Ô´øbuffer)
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+"çŠ¶æ€æ æ’ä»¶(è‡ªå¸¦buffer)
+"Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
 
-"Ê÷ĞÎÄ¿Â¼²å¼ş
-Plugin 'scrooloose/nerdtree'
 
 "Surround
 "NERDCommenter 
@@ -51,46 +74,76 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 "--------------------------------------
-"	< nerdtree(Ê÷ĞÎÄ¿Â¼) ²å¼şÅäÖÃ >
+"	< vim-colors-solarized(é…è‰²ä¸»é¢˜) æ’ä»¶é…ç½® >
 "--------------------------------------
-" ×Ô¶¯´ò¿ªÊ÷ĞÎÄ¿Â¼
-	autocmd vimenter * NERDTree
-
-" ¹â±ê×Ô¶¯¾Û½¹µ½ÓÒ²àÎÄ¼ş±à¼­Çø
-	autocmd VimEnter * wincmd w
-
-" ¹Ø±ÕÊ÷ĞÎÄ¿Â¼ 
-    "let loaded_nerd_tree=1
-
-" Í»³öÏÔÊ¾Ê÷ĞÎÄ¿Â¼ÖĞ£¬¹â±êËùÔÚĞĞ
-    let NERDTreeHighlightCursorline=0
-
-" ÔÚÊ÷ĞÎÄ¿Â¼ÖĞ£¬ÏÔÊ¾ÊéÇ©ÁĞ±í
-    let NERDTreeShowBookmarks=1
-
-" ÏÔÊ¾Ê÷ĞÎÄ¿Â¼µÄĞĞºÅ
-	let g:NERDTreeShowLineNumbers=1
-" ÉèÖÃÊ÷ĞÎÄ¿Â¼µÄÎ»ÖÃ
-    let NERDTreeWinPos='left'
-" ÉèÖÃÊ÷ĞÎÄ¿Â¼´°¿Ú´óĞ¡
-    let NERDTreeWinSize=31
-
-"--------------------------------------
-"	< vim-colors-solarized(Óï·¨¸ßÁÁ²å¼ş) ²å¼şÅäÖÃ >
-"--------------------------------------
-syntax enable           "¼¤»î Óï·¨¸ßÁÁ
-set background=dark     "ÉèÖÃ±³¾°ÑÕÉ«Îª°µÉ«
-"set background=light    "ÉèÖÃ±³¾°ÑÕÉ«ÎªÁÁÉ«
-colorscheme solarized   "Ö÷ÌâÑÕÉ«
-call togglebg#map("<F5>")   "±³¾°ÑÕÉ«ÇĞ»»(ÁÁÉ«ºÍ°µÉ«ÇĞ»»)
+syntax enable           "æ¿€æ´» è¯­æ³•é«˜äº®
+set background=dark     "è®¾ç½®èƒŒæ™¯é¢œè‰²ä¸ºæš—è‰²
+"set background=light    "è®¾ç½®èƒŒæ™¯é¢œè‰²ä¸ºäº®è‰²
+colorscheme solarized   "ä¸»é¢˜é¢œè‰²
+call togglebg#map("<F5>")   "èƒŒæ™¯é¢œè‰²åˆ‡æ¢(äº®è‰²å’Œæš—è‰²åˆ‡æ¢)
 let g:solarized_termcolors=256
 
 "--------------------------------------
-"	< vim-multiple-cursors(¶à¹â±ê¶àĞĞ±à¼­) ²å¼şÅäÖÃ >
+"	< syntastic(è¯­æ³•æ£€æŸ¥) æ’ä»¶é…ç½® >
 "--------------------------------------
-let g:multi_cursor_use_default_mapping=0
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_error_symbol = '>>'		"è¯­æ³•é”™è¯¯æ—¶ï¼Œä¾§è¾¹æ æ˜¾ç¤º
+let g:syntastic_warning_symbol = '>'	"è¯­æ³•è­¦å‘Šæ—¶ï¼Œä¾§è¾¹æ æ˜¾ç¤º
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1	"é”™è¯¯çª—å£æ‰“å¼€æ¨¡å¼
+"let g:syntastic_check_on_open = 1	"æ‰“å¼€æ–‡ä»¶æ˜¯å¦è¿›è¡Œè¯­æ³•æ£€æŸ¥ é»˜è®¤ä¸æ£€æŸ¥ 1ï¼šæ£€æŸ¥
+let g:syntastic_check_on_wq = 0		" å½“æ‰§è¡Œï¼ˆ:wqï¼‰ã€ï¼ˆ:xï¼‰ï¼ˆ:ZZï¼‰æ—¶è·³è¿‡è¯­æ³•æ£€æŸ¥ï¼Œï¼ˆ:wï¼‰æ£€æŸ¥
+
+highlight SyntasticErrorSign guifg=white guibg=red
+
+"å®‰è£…node.js ä½¿ç”¨npm
+" npm install -g htmlhint
+" npm install -g jshint
+" npm install -g csslint
+" npm install -g prettycss
+
+let g:syntastic_html_checkers=['htmlhint', 'jshint']
+let g:syntastic_css_checkers=['csslint', 'prettycss']
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+
+
+
+"--------------------------------------
+"	< nerdtree(æ ‘å½¢ç›®å½•) æ’ä»¶é…ç½® >
+"--------------------------------------
+" è‡ªåŠ¨æ‰“å¼€æ ‘å½¢ç›®å½•
+	autocmd vimenter * NERDTree
+
+" å…‰æ ‡è‡ªåŠ¨èšç„¦åˆ°å³ä¾§æ–‡ä»¶ç¼–è¾‘åŒº
+	autocmd VimEnter * wincmd w
+
+" å…³é—­æ ‘å½¢ç›®å½• 
+    "let loaded_nerd_tree=1
+
+" çªå‡ºæ˜¾ç¤ºæ ‘å½¢ç›®å½•ä¸­ï¼Œå…‰æ ‡æ‰€åœ¨è¡Œ
+    let NERDTreeHighlightCursorline=0
+
+" åœ¨æ ‘å½¢ç›®å½•ä¸­ï¼Œæ˜¾ç¤ºä¹¦ç­¾åˆ—è¡¨
+    let NERDTreeShowBookmarks=1
+
+" æ˜¾ç¤ºæ ‘å½¢ç›®å½•çš„è¡Œå·
+	let g:NERDTreeShowLineNumbers=1
+" è®¾ç½®æ ‘å½¢ç›®å½•çš„ä½ç½®
+    let NERDTreeWinPos='left'
+" è®¾ç½®æ ‘å½¢ç›®å½•çª—å£å¤§å°
+    let NERDTreeWinSize=31
+
+
+"--------------------------------------
+"	< vim-multiple-cursors(å¤šå…‰æ ‡å¤šè¡Œç¼–è¾‘) æ’ä»¶é…ç½® >
+"--------------------------------------
+"let g:multi_cursor_use_default_mapping=0
 " Default mapping
-let g:multi_cursor_next_key='<C-m>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
+"let g:multi_cursor_next_key='<C-n>'
+"let g:multi_cursor_prev_key='<C-p>'
+"let g:multi_cursor_skip_key='<C-x>'
+"let g:multi_cursor_quit_key='<Esc>'
