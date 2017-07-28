@@ -27,33 +27,85 @@
 	set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1	"文件自动识别的编码方式
 	set termencoding=utf-8	"屏幕显示的编码方式
 
-"解决菜单乱码
+"显示英文帮助
+	set helplang=en
+
+if has("win16") || has("win32") || has("win64") || has("win95")
+	"解决菜单乱码
 	source $VIMRUNTIME/delmenu.vim
 	source $VIMRUNTIME/menu.vim
 
-"解决consle输出乱码
+	"解决consle输出乱码
 	language messages zh_CN.utf-8
+endif
 
-"显示中文帮助（将vimcdoc-1.8.0/doc目录下的文件(Vim 7.3)，复制到~/vimfiles/doc目录中）
-	"set helplang=cn
 
 """"""""""""""""""""""
 "      窗口、字体
 """"""""""""""""""""""
+	set shortmess=atI				"启动的时候不显示那个援助索马里儿童的提示
+
 	set lines=29 columns=108			"窗口大小 行=lines 列=columns
     set guioptions-=T                   "隐藏窗口上侧工具栏
     set guioptions-=m                   "隐藏窗口上侧菜单栏
     set guioptions-=r                   "隐藏窗口右侧的滚动条
     set guioptions-=L                   "隐藏窗口左侧的滚动条
     set guioptions-=b                   "隐藏窗口底部的滚动条
-	set guifont=Source_Code_Pro:h14		"设置字体（将SourceCodePro_FontsOnly/TTF目录下的文件，复制到windows系统fonts字体目录下）
+	set guifont=Source_Code_Pro:h14		"设置字体
     set ambiwidth=double                "防止特殊符号无法正常显示
 
+
 """"""""""""""""""""""
-"      行
+"      配色主题
 """"""""""""""""""""""
-	set nu!			"显示行号
-	set cursorline	"突出显示当前行
+	"colorscheme gruvbox		"配色方案
+	set background=dark		"背景使用黑色 
+	set t_Co=256			"可以使用的颜色数目
+
+
+""""""""""""""""""""""
+"      行、列
+""""""""""""""""""""""
+	set number			"显示行号
+	set nowrap			"不要换行 
+	set cursorline		"高亮显示当前行
+	set cursorcolumn	"高亮显示当前列
+	set relativenumber	"显示相对的行号 show relative line number
+	set scrolloff=7		"设定光标离窗口上下边界 n 行时窗口自动滚动
+
+
+""""""""""""""""""""""
+"      鼠标
+""""""""""""""""""""""
+	"set mouse-=a		"禁用鼠标
+
+
+""""""""""""""""""""""
+"      文本
+""""""""""""""""""""""
+	set t_ti= t_te=				"退出vim后，内容显示在终端屏幕
+	set selection=inclusive		"选择文本时，光标所在位置也属于被选中的范围
+	set selectmode=mouse,key
+	set title					"改变终端的标题
+	set novisualbell			" 不要闪烁 " don't beep
+	set noerrorbells			" 不让vim发出讨厌的滴滴声
+	set t_vb=					"当vim进行编辑时，如果命令错误，会发出一个响声，该设置去掉响声
+	set tm=500
+	set nostartofline			"在缓冲区之间切换时保持光标位置
+	set showmatch				"设置匹配模式，显示匹配的括号
+	set mat=2					"当匹配括号的时候，眨眼的时间是多少
+	set hidden					"允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存(没有保存的缓冲区可以自动隐藏)
+	set wildmode=longest:full,full
+	set ttyfast
+	set ffs=unix,dos,mac			" Use Unix as the standard file type
+	set formatoptions+=m			"如遇Unicode值大于255的文本，不必等到空格再折行。
+	set formatoptions+=B			"合并两行中文时，不在中间加空格（当连接行时，不要在两个多字节字符之间插入空格）
+	set completeopt=longest,menu	"自动补全配置,让Vim的补全菜单行为与一般IDE一致
+	set wildmenu					" 增强模式中的命令行自动完成操作（自动完成命令）（自身命令行模式智能补全）
+	set wildignore=**.o,*~,.swp,*.bak,*.pyc,*.class		" Ignore compiled files （tab键的自动完成现在会忽略这些 ）
+	autocmd InsertEnter * :set norelativenumber " 在插入模式中没有相对数字
+	autocmd InsertLeave * :set relativenumber   " 在保持插入模式时显示相对数字
+
 
 """"""""""""""""""""""
 "      文件
@@ -61,7 +113,8 @@
 	set nobackup	"从不备份(文件保存时，不产生~备份文件)
 	set noswapfile	"不产生交换文件(文件编辑时，不产生.swp交换文件)
 	set autoread	"自动重新读入(当打开文件在外部被修改，自动更新该文件)
-    
+
+
 "文件类型检测
 "   detection	on:自动检测文件类型
 "   plugin		on:运行时环境目录下加载该类型相关的插件
@@ -69,29 +122,70 @@
 "
     "filetype plugin indent on
 
+
 """"""""""""""""""""""
-"      tab缩进
+"      tab键
 """"""""""""""""""""""
 	set expandtab		"将tab键转为空格
 	set tabstop=4		"一个tab键占4个空格
 	set softtabstop=4	"编辑模式时,退格键的退回为4个空格
 	set shiftwidth=4	"tab键自动缩进时,宽度为4个空格
 	
-	"set smartindent		"在这种缩进模式中,每一行都和前一行有相同的缩进量,同时能正确的识别出花括号,当遇到右花括号（}）,则取消缩进形式
+	set smartindent		"在这种缩进模式中,每一行都和前一行有相同的缩进量,同时能正确的识别出花括号,当遇到右花括号（}）,则取消缩进形式
 	set autoindent		"自动缩进(对齐),每行的缩进值与上一行相等
-	
+	set smarttab		"在行和段开始处使用制表符
+	set shiftround		"使用 < 和 > 进行缩进时 依shiftwidth 调整宽度
+
+
+""""""""""""""""""""""
+"      backspace键
+""""""""""""""""""""""
+	set backspace=eol,start,indent		"配置backspace 使退格键（backspace）使用此顺序; 正常处理indent, eol, start等 
+	set whichwrap+=<,>,h,l				"允许backspace和光标键跨越行边界(不建议)
+
+
+""""""""""""""""""""""
+"      快捷键
+""""""""""""""""""""""
+	set pastetoggle=<F5>		"F5快捷键来激活/取消 paste模式(粘贴模式)
+
+
 """"""""""""""""""""""
 "      搜索
 """"""""""""""""""""""	
 	set ignorecase		"搜索模式里忽略大小写
     set hlsearch        "高亮显示搜索结果
     set incsearch       "搜索时,直接高亮
-    "set nowrapscan      "搜索到文件两端时,不重新搜索
+	set smartcase		"如果搜索模式全是小写的，则忽略大小写，否则不区分大小写
+    set nowrapscan      "搜索到文件两端时,不重新搜索
+	set viminfo^=%		" Remember info about open buffers on close
+	set magic			" 设置魔术（对于正则表达式，可以打开魔法）
+
 
 """"""""""""""""""""""
-"      命令行
+"      命令行、状态栏
 """"""""""""""""""""""
-    set cmdheight=2 "命令行高度
-	set showcmd		"命令行显示输入的命令
-	set showmode	"命令行显示vim当前模式
-	set ruler		"标尺，命令行显示光标位置的行号和列号，逗号分隔
+    set cmdheight=2		"命令行高度
+	set showcmd			"命令行显示输入的命令
+	set showmode		"命令行显示vim当前模式
+	set ruler			"标尺，命令行显示光标位置的行号和列号，逗号分隔
+	set history=200		"记录冒号命令的历史行数
+	set noshowmode		"显示当前模式
+
+	if has('statusline')
+		set laststatus=2							"将状态行显示在窗口底部倒数第二行
+		set statusline=%<%f\						" 文件名
+		set statusline+=%w%h%m%r					" 选项
+		"set statusline+=%{fugitive#statusline()}	" Git Hotness
+		set statusline+=\ [%{&ff}/%Y]				" 文件类型
+		set statusline+=\ [%{getcwd()}]				" 当前dir
+		set statusline+=%=%-14.(%l,%c%V%)\ %p%%		" 右对齐文件导航信息
+	endif
+
+
+""""""""""""""""""""""
+"      代码折叠
+""""""""""""""""""""""
+	set foldenable			"代码折叠
+	set foldmethod=indent	"代码折叠方式: manual(手工定义折叠) indent(用缩进表示折叠) expr(用表达式来定义折叠) syntax(用语法高亮来定义折叠) diff(对没有更改的文本进行折叠) marker(用标志折叠)
+	set foldlevel=99		"显示折叠的级别
