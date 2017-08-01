@@ -45,7 +45,8 @@ endif
 """"""""""""""""""""""
 	set shortmess=atI				"启动的时候不显示那个援助索马里儿童的提示
 
-	set lines=29 columns=108			"窗口大小 行=lines 列=columns
+	"set lines=60 columns=200			"窗口大小 行=lines 列=columns
+	autocmd GUIEnter * simalt ~x		"自动最大化
     set guioptions-=T                   "隐藏窗口上侧工具栏
     set guioptions-=m                   "隐藏窗口上侧菜单栏
     set guioptions-=r                   "隐藏窗口右侧的滚动条
@@ -55,13 +56,6 @@ endif
     set ambiwidth=double                "防止特殊符号无法正常显示
 
 
-""""""""""""""""""""""
-"      配色主题
-""""""""""""""""""""""
-	"colorscheme gruvbox		"配色方案
-	set background=dark		"背景使用黑色 
-	set t_Co=256			"可以使用的颜色数目
-
 
 """"""""""""""""""""""
 "      行、列
@@ -70,9 +64,10 @@ endif
 	set nowrap			"不要换行 
 	set cursorline		"高亮显示当前行
 	set cursorcolumn	"高亮显示当前列
-	set relativenumber	"显示相对的行号 show relative line number
+	"set relativenumber	"显示相对的行号 show relative line number
 	set scrolloff=7		"设定光标离窗口上下边界 n 行时窗口自动滚动
-
+	"autocmd InsertEnter * :set norelativenumber " 在插入模式中没有相对数字
+	"autocmd InsertLeave * :set relativenumber   " 在保持插入模式时显示相对数字
 
 """"""""""""""""""""""
 "      鼠标
@@ -103,8 +98,7 @@ endif
 	set completeopt=longest,menu	"自动补全配置,让Vim的补全菜单行为与一般IDE一致
 	set wildmenu					" 增强模式中的命令行自动完成操作（自动完成命令）（自身命令行模式智能补全）
 	set wildignore=**.o,*~,.swp,*.bak,*.pyc,*.class		" Ignore compiled files （tab键的自动完成现在会忽略这些 ）
-	autocmd InsertEnter * :set norelativenumber " 在插入模式中没有相对数字
-	autocmd InsertLeave * :set relativenumber   " 在保持插入模式时显示相对数字
+
 
 
 """"""""""""""""""""""
